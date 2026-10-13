@@ -1,0 +1,136 @@
+/* One reading column under a marquee wordmark, the app's black-and-gold film-house look. */
+/* Latin subsets of Source Serif 4 and Titan One (SIL Open Font License, fonts/*-OFL.txt), served with the pages. */
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/source-serif-4-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/source-serif-4-italic-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Titan One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/titan-one-latin.woff2") format("woff2");
+}
+:root {
+  --paper: #fafaf6;
+  --panel: #f2eee3;
+  --ink: #1e1b15;
+  --muted: #5e5749;
+  --gold: #85610f;
+  --bulb: #c9a046;
+  --rule: #e2dccd;
+  --todo: #fff1c2;
+  --font-display: "Titan One", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --font-body: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121011;
+    --panel: #1c1916;
+    --ink: #eee8da;
+    --muted: #aaa190;
+    --gold: #dcb65e;
+    --bulb: #e8c46b;
+    --rule: #2e2a24;
+    --todo: #4a3d14;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121011;
+  --panel: #1c1916;
+  --ink: #eee8da;
+  --muted: #aaa190;
+  --gold: #dcb65e;
+  --bulb: #e8c46b;
+  --rule: #2e2a24;
+  --todo: #4a3d14;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  padding-inline: 1rem;
+  padding-block: 0 3rem;
+}
+.page { max-width: 42rem; margin-inline: auto; display: grid; gap: 1.75rem; }
+.content { display: grid; gap: 1.75rem; min-width: 0; }
+
+.masthead { display: grid; gap: 0.75rem; padding-block: 1.75rem 0; }
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  color: var(--gold);
+  text-decoration: none;
+  line-height: 1.1;
+}
+.bulbs {
+  height: 8px;
+  background-image: radial-gradient(circle at 4px 4px, var(--bulb) 2.5px, transparent 3px);
+  background-size: 16px 8px;
+  background-repeat: repeat-x;
+  opacity: 0.85;
+}
+.nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; font-family: var(--font-ui); font-size: 0.875rem; }
+.nav a { color: var(--muted); text-decoration: none; padding-block: 0.25rem; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--bulb); }
+.nav .lang { margin-left: auto; }
+
+h1, h2, h3 { line-height: 1.25; text-wrap: balance; margin: 0; }
+h1 { font-size: 2.1rem; font-weight: 700; }
+h2 { font-size: 1.3rem; font-weight: 650; padding-top: 0.5rem; }
+h3 { font-size: 1.05rem; font-weight: 650; }
+.lede { color: var(--muted); margin: 0.5rem 0 0; }
+.updated { font-family: var(--font-ui); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin: 0.75rem 0 0; }
+
+section { display: grid; gap: 0.6rem; min-width: 0; }
+section p, section ul, section ol { margin: 0; }
+ul, ol { padding-left: 1.25rem; display: grid; gap: 0.35rem; }
+a { color: var(--gold); text-underline-offset: 0.15em; }
+a:focus-visible { outline: 2px solid var(--bulb); outline-offset: 2px; border-radius: 2px; }
+
+.short {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  display: grid;
+  gap: 0.6rem;
+}
+.short h2 { font-size: 1.05rem; padding-top: 0; font-family: var(--font-ui); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.97rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.75rem 0.55rem 0; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-ui); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+.contact { font-size: 1.1rem; }
+mark.todo { background: var(--todo); color: var(--ink); padding: 0 0.25em; border-radius: 3px; font-family: var(--font-ui); font-size: 0.9em; }
+footer { border-top: 1px solid var(--rule); padding-top: 1rem; font-family: var(--font-ui); font-size: 0.8125rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+footer a { color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav a { transition: color 120ms ease, border-color 120ms ease; }
+}
